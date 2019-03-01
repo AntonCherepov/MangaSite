@@ -1,12 +1,14 @@
 from django.shortcuts import render
-from django.template import loader
-#print(loader.get_template('/mainpage.html'))
+from django.views import View
 
 
-def mainpage(request):
-    #MangaSite / templates / mainpage / mainpage.html
-    return render(request, 'mainpage/mainpage.html')
+class Index(View):
+    @staticmethod
+    def get(request):
+        return render(request, 'mainpage/index.html')
 
 
-def index(request):
-    return render(request, 'index.html')
+class Mainpage(View):
+    @staticmethod
+    def get(request):
+        return render(request, 'mainpage/mainpage.html')
