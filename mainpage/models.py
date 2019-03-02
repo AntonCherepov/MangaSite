@@ -8,5 +8,9 @@ class Main(models.Model):
     main_image = models.ImageField('Image_name')
 
 
-class User:
+class User(models.Model):
+    pass
+
+
+class Files(models.Model):
     pass
