@@ -16,7 +16,7 @@ class User(Model):
         return "{}".format(self.nick_name)
 
 
-class Main(Model):
+class News(Model):
     """ Модель хранения новости """
 
     user = ForeignKey(User, verbose_name='User', on_delete=CASCADE)
