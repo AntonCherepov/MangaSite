@@ -20,7 +20,7 @@ class Project(Model):
     """ Модель хранения информации о проекте"""
 
     project_name = CharField(max_length=100)
-    description = TextField(max_length=1000, null=True)
+    description_of_project = TextField(max_length=1000, null=True)
     staff_name = ManyToManyField(User)
 
     def __str__(self):
