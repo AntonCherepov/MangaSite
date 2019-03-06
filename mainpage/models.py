@@ -48,7 +48,7 @@ class News(Model):
     text = TextField('Text', max_length=500)
     pub_date = DateTimeField('Date published', auto_now_add=True)
     zip_file = ManyToManyField(File)
-    main_image = ImageField('Image_name')
+    main_image = ImageField('Image name')
 
     def __str__(self):
         return "{}".format(self.user)
