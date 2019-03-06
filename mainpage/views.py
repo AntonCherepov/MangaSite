@@ -5,8 +5,8 @@ from threading import Thread
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import View
-
 from MangaSite import settings
+from mainpage.models import News, File, User
 
 
 def timed():
@@ -24,7 +24,8 @@ class Index(View):
 class Mainpage(View):
     @staticmethod
     def get(request):
-        return render(request, 'mainpage/mainpage.html')
+        news = News.objects.all()
+        return render(request, 'mainpage/mainpage.html', {"news": news})
 
 
 class DownloadFile(View):
