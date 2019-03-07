@@ -30,7 +30,6 @@ class Project(Model):
 class File(Model):
     """ Модель хранения пути к файлу """
 
-    connector_to_news = IntegerField(default=0, blank=True)
     project_name = ForeignKey(Project, verbose_name='Project name',
                               on_delete=CASCADE, null=True)
     file_name = CharField('File name', max_length=200)

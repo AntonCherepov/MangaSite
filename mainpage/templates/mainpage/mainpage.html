@@ -1,4 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div align="center">
+        <p>{{ news }}</p>
+        {% for post in news %}
+            <h3>{{ post.headline }}</h3>
+            <p>{{ post.text }}</p>
+            <p>{{ post.pub_date }}</p>
+            <br><br>
+        {% endfor %}
+    </div>
 {% endblock content %}
