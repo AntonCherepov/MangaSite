@@ -1,24 +1,10 @@
 import mimetypes
 import os
-from time import sleep
-from threading import Thread
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import View
 from MangaSite import settings
-from mainpage.models import News, File, User
-
-
-def timed():
-    sleep(30)
-
-
-class Index(View):
-    @staticmethod
-    def get(request):
-        t = Thread(target=timed)
-        t.start()
-        return render(request, 'mainpage/index.html')
+from mainpage.models import News, User
 
 
 class Mainpage(View):
@@ -28,6 +14,21 @@ class Mainpage(View):
         return render(request, 'mainpage/mainpage.html', {"news": news})
 
 
+class Index(View):
+    @staticmethod
+    def get(request):
+        news = News.objects.get(id=1)
+        news_files = news.zip_file.all()
+        context = {"news": [{"url": os.path.join("media",
+                            str(i.file_path)),
+                            "file_name": str(i.file_path)}
+                            for i in news_files]}
+        return render(
+            request,
+            'mainpage/index.html', context
+            )
+
+'''
 class DownloadFile(View):
     @staticmethod
     def get(request, download_name):
@@ -43,3 +44,4 @@ class DownloadFile(View):
             os.stat(settings.MEDIA_DIR + file).st_size)
         response['Content-Disposition'] = "attachment; filename='test.jpg'"
         return response
+'''

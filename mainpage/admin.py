@@ -5,6 +5,7 @@ from mainpage.models import File, User, News, Project
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('id', 'pub_date', 'user', 'headline',
                     'text', 'main_image')
+    filter_horizontal = ['zip_file']
 
 
 class FileAdmin(admin.ModelAdmin):
@@ -17,7 +18,8 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'project_name', 'description')
+    list_display = ('id', 'project_name', 'description_of_project')
+    filter_horizontal = ['staff_name']
 
 
 admin.site.register(News, NewsAdmin)

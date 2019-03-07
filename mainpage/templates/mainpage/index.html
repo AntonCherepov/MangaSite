@@ -1,4 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <h2>yigkugk</h2>
+{% for element in news %}
+    <a href="{{ element.url }}">{{ element.file_name }}</a>
+    <br>
+{% endfor %}
+    <p>Stuff etc etc.</p>
 {% endblock content %}
