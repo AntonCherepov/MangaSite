@@ -8,7 +8,8 @@ class Mainpage(View):
     @staticmethod
     def get(request):
         news = News.objects.order_by("-id")
-        return render(request, 'mainpage/mainpage.html', {"news": news})
+        context = {"news": news}
+        return render(request, 'mainpage/mainpage.html', context)
 
 
 class Index(View):
@@ -18,7 +19,7 @@ class Index(View):
         news_files = news.zip_file.all()
         context = {"news_files": [{"url": os.path.join("media",
                                                        str(i.file_path)),
-                                   "file_name": str(i.file_path)}
+                                   "file_name": str(i.file_name)}
                                   for i in news_files]}
         return render(
             request,

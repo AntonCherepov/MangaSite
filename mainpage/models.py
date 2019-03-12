@@ -33,7 +33,7 @@ class File(Model):
     project_name = ForeignKey(Project, verbose_name='Project name',
                               on_delete=CASCADE, null=True)
     file_name = CharField('File name', max_length=200)
-    file_path = FileField(max_length=200)
+    file_path = FileField(max_length=200, upload_to='zip_files')
 
     def __str__(self):
         return "{}".format(self.file_name)
@@ -47,7 +47,7 @@ class News(Model):
     text = TextField('Text', max_length=500)
     pub_date = DateTimeField('Date published', auto_now_add=True)
     zip_file = ManyToManyField(File)
-    main_image = ImageField('Image name')
+    main_image = ImageField('Image name', upload_to='images')
 
     def __str__(self):
         return "{}".format(self.user)

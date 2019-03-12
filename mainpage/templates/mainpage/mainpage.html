@@ -5,7 +5,13 @@
         <p>{{ news }}</p>
         {% for post in news %}
             <h3>{{ post.headline }}</h3>
+            <img src="{{ post.main_image.url }}" alt="image" width="300" height="200">
             <p>{{ post.text }}</p>
+            {% for zip_file in post.zip_file.all %}
+            <p>
+                <a href="media/{{ zip_file.file_path }}">{{ zip_file.file_name }}</a>
+            </p>
+            {% endfor %}
             <p>{{ post.pub_date }}</p>
             <br><br>
         {% endfor %}
