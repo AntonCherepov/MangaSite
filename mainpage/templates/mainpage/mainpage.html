@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div align="center">
-        <p>{{ news }}</p>
+        <!-- <p>{{ news }}</p> -->
         {% for post in news %}
-            <h3>{{ post.headline }}</h3>
-            <img src="{{ post.main_image.url }}" alt="image" width="300" height="200">
-            <p>{{ post.text }}</p>
-            {% for zip_file in post.zip_file.all %}
-            <p>
-                <a href="media/{{ zip_file.file_path }}">{{ zip_file.file_name }}</a>
-            </p>
-            {% endfor %}
-            <p>{{ post.pub_date }}</p>
-            <br><br>
+            <div class="element">
+                <h3 align="center">{{ post.headline }}</h3>
+                <p align="center">
+                    <img src="{{ post.main_image.url }}" alt="image" width="300" height="200">
+                </p>
+                <p>{{ post.text }}</p>
+                {% for zip_file in post.zip_file.all %}
+                <p>
+                    <a href="media/{{ zip_file.file_path }}">{{ zip_file.file_name }}</a>
+                </p>
+                {% endfor %}
+                <div class="timeAndAuthor">
+                    <p>{{ post.pub_date }}</p>
+                </div>
+            </div>
         {% endfor %}
-    </div>
 {% endblock content %}
