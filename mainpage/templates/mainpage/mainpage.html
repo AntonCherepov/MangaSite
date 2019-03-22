@@ -1,21 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-        <!-- <p>{{ news }}</p> -->
         {% for post in news %}
             <div class="element">
-                <h3 align="center">{{ post.headline }}</h3>
-                <p align="center">
-                    <img src="{{ post.main_image.url }}" alt="image" width="300" height="200">
-                </p>
-                <p>{{ post.text }}</p>
-                {% for zip_file in post.zip_file.all %}
-                <p>
-                    <a href="media/{{ zip_file.file_path }}">{{ zip_file.file_name }}</a>
-                </p>
-                {% endfor %}
+                <div class="headline"><h2>
+                    {{ post.headline }}
+                </h2></div>
+                <div class="main_image">
+                    <img src="{{ post.main_image.url }}" alt="image" width="200" height="200">
+                </div>
+                <div class="element_right">
+                    <div class="main_text">{{ post.text }}</div>
+                    <div class="clear"></div>
+                    <h4>Скачать:</h4>
+                    {% for zip_file in post.zip_file.all %}
+                    <p>
+                        <a href="media/{{ zip_file.file_path }}" class="download_button">{{ zip_file.file_name }}</a>
+                    </p>
+                    {% endfor %}
+                </div>
                 <div class="timeAndAuthor">
-                    <p>{{ post.pub_date }}</p>
+                    <p>Автор: {{ post.user }} | Опубликовано: {{ post.pub_date }}</p>
                 </div>
             </div>
         {% endfor %}

@@ -1,8 +1,8 @@
 from django.db.models import (ImageField, DateTimeField,
                               TextField, FileField,
                               CharField, ForeignKey,
-                              IntegerField, CASCADE,
-                              Model, ManyToManyField)
+                              Model, CASCADE,
+                              ManyToManyField)
 
 
 class User(Model):
@@ -44,7 +44,7 @@ class News(Model):
 
     user = ForeignKey(User, verbose_name='User', on_delete=CASCADE)
     headline = CharField('Headline', max_length=150)
-    text = TextField('Text', max_length=500)
+    text = TextField('Text', max_length=600)
     pub_date = DateTimeField('Date published', auto_now_add=True)
     zip_file = ManyToManyField(File)
     main_image = ImageField('Image name', upload_to='images')
