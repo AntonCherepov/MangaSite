@@ -22,6 +22,8 @@ class Project(Model):
     project_name = CharField(max_length=100)
     description_of_project = TextField(max_length=1000, null=True)
     staff_name = ManyToManyField(User)
+    main_image = ImageField('Image name', upload_to='projects_images',
+                            null=True)
 
     def __str__(self):
         return "{}".format(self.project_name)

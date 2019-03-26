@@ -1,13 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>Manga</title>
         <meta charset="utf-8">
+        <!--<link href="{% static 'base.css' %}" type="text/css" rel="stylesheet"> -->
         <style type="text/css">
             .doc{
                 background: #e0e0e0;
             }
-            .ourblog { 
+            .preview { 
                 background: #e0e0e0;
                 height: 270px;
                 width: 100%;
@@ -16,13 +18,34 @@
                 line-height: 270px;
             }
             .contentblock{
+                margin: auto;
+            }
+            .nav{
+                text-align: center;
+                padding-right: 10px;
+                width: 350px;
+                height: 45px;
+                line-height: 43px;
+                margin: auto;
+            }
+            ul.pages{
+                margin: 0;
+                padding: 4px;
+            }
+            ul.pages li{
+                display: inline;
+                margin-right: 5px;
+                padding: 10px;
+                color: #00BFFF;
+                font: 14pt Arial;
+            }
+            /* mainpage.html */
+            .newsblock{
                 width: 800px; /* Ширина элемента в пикселах */
                 padding: 10px; /* Поля вокруг текста */
                 margin: auto; /* Выравниваем по центру */
                 border: solid 2px lightgray;
-
             }
-            /* mainpage.html */
             .element{
                 background: #f5f5f5;
                 border: solid 1px lightgray;
@@ -39,17 +62,28 @@
             }
             .main_image{
                 height: 210px;
-                width: 250px;
+                width: 230px;
                 padding-left: 15px;
                 float: left;
+            }
+            .image{
+                height: 200px
+                width: 300px;
+                border: solid 2px gray;
             }
             .element_right{
                 float: left;
             }
+            .zip{
+                padding-left: 50px;
+                padding-bottom: 20px;
+            }
             .main_text{
                 margin-right: 20px;
+                padding-top: 20px;
                 width: 500px;
                 height: 200px;
+                text-indent: 2.5em;
             }
             .clear{
                 clear: left;
@@ -75,13 +109,27 @@
                 color: gray;
                 background-color: #FFFFFF;
             }
+            /* projects.html */
+            .chapters{
+            }
+            /* project_info.html */
+            .project_info{
+                width: 700px;
+            }
         </style>
     </head>
     <body>
         <div class="doc">
-            <div class="ourblog" align="center">
+            <div class="preview" align="center">
                 Поле для JS
-            </div> 
+            </div>
+            <div class="nav">
+                <ul class="pages">
+                    <li><a href="/">Main</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/team">Team</a></li>
+                </ul>
+            </div>
             <div class="contentblock">
                 {% block content %}
                 {% endblock content %}
