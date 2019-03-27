@@ -1,11 +1,13 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <div class="project_content">
-        {% for project in projects %}
-        <p><a href="/{{ project.project_name }}">
-            <img src="media/{{ project.main_image }}" alt="image" class="image" width="250" height="250">
-        </a></p>
-        {% endfor %}
-    </div>
+    {% for current_type_projects in all_projects %}
+        <h3>{{ current_type_projects.0.status }}</h3>
+        <ul class="project_content">
+            {% for project in current_type_projects %}
+            <li><a href="/{{ project.name }}">
+                <img src="media/{{ project.image }}" alt="image" class="image" width="250" height="250">
+            </a></li>
+            {% endfor %}
+    {% endfor %}
+    </ul>
 {% endblock content %}

@@ -9,6 +9,7 @@ class User(Model):
     """ Модель для пользователя """
 
     nick_name = CharField(max_length=50)
+    image = ImageField('Avatar', upload_to='user_images', null=True)
     email = CharField(max_length=120)
     password = CharField(max_length=60)
 
@@ -19,14 +20,15 @@ class User(Model):
 class Project(Model):
     """ Модель хранения информации о проекте"""
 
-    project_name = CharField(max_length=100)
-    description_of_project = TextField(max_length=1000, null=True)
+    name = CharField(max_length=100)
+    description = TextField(max_length=1000, null=True)
+    # active, dropped, finished, maybe
+    status = CharField(max_length=8, null=True)
     staff_name = ManyToManyField(User)
-    main_image = ImageField('Image name', upload_to='projects_images',
-                            null=True)
+    image = ImageField('Image name', upload_to='projects_images', null=True)
 
     def __str__(self):
-        return "{}".format(self.project_name)
+        return "{}".format(self.name)
 
 
 class File(Model):
@@ -34,11 +36,11 @@ class File(Model):
 
     project_name = ForeignKey(Project, verbose_name='Project name',
                               on_delete=CASCADE, null=True)
-    file_name = CharField('File name', max_length=200)
-    file_path = FileField(max_length=200, upload_to='zip_files')
+    name = CharField('File name', max_length=200)
+    path = FileField(max_length=200, upload_to='zip_files')
 
     def __str__(self):
-        return "{}".format(self.file_name)
+        return "{}".format(self.name)
 
 
 class News(Model):
@@ -49,7 +51,7 @@ class News(Model):
     text = TextField('Text', max_length=600)
     pub_date = DateTimeField('Date published', auto_now_add=True)
     zip_file = ManyToManyField(File)
-    main_image = ImageField('Image name', upload_to='images')
+    image = ImageField('Image name', upload_to='images')
 
     def __str__(self):
         return "{}".format(self.user)

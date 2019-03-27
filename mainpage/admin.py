@@ -3,12 +3,12 @@ from mainpage.models import File, User, News, Project
 
 
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'pub_date', 'user', 'headline', 'text', 'main_image')
+    list_display = ('id', 'pub_date', 'user', 'headline', 'text', 'image')
     filter_horizontal = ['zip_file']
 
 
 class FileAdmin(admin.ModelAdmin):
-    list_display = ('id', 'file_name', 'file_path', 'project_name')
+    list_display = ('id', 'name', 'path', 'project_name')
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -16,7 +16,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'project_name', 'description_of_project')
+    list_display = ('id', 'name', 'status', 'description')
     filter_horizontal = ['staff_name']
 
 

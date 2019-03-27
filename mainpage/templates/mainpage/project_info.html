@@ -2,12 +2,12 @@
 
 {% block content %}
     <div class="project_info">
-        <p>{{ project.project_name }}</p>
-        <p>{{ project.description_of_project }}</p>
+        <p>{{ project.name }}</p>
+        <p>{{ project.description }}</p>
         <div class="chapters">
             <ul class="chapters_in_projects">
                 {% for zip_file in project.file_set.all %}
-                    <li><a href="media/{{ zip_file.file_path }}" class="download_button">{{ zip_file.file_name }}</a></li>
+                    <li><a href="media/{{ zip_file.path }}" class="download_button">{{ zip_file.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
