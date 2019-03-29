@@ -2,8 +2,15 @@
 
 {% block content %}
     <div class="project_info">
-        <p>{{ project.name }}</p>
-        <p>{{ project.description }}</p>
+        <p>Название проекта: {{ project.name }}</p>
+        Описание:
+        <div class="description">{{ project.description }}</div>
+        <p>
+            Над проектом работали:
+            {% for staff in project.staff_name.all %}
+                | {{ staff }} 
+            {% endfor %}
+        </p>
         <div class="chapters">
             <ul class="chapters_in_projects">
                 {% for zip_file in project.file_set.all %}

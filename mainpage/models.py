@@ -8,20 +8,21 @@ from django.db.models import (ImageField, DateTimeField,
 class User(Model):
     """ Модель для пользователя """
 
-    nick_name = CharField(max_length=50)
+    name = CharField(max_length=50)
+    staff_position = CharField(max_length=100, default="")
     image = ImageField('Avatar', upload_to='user_images', null=True)
     email = CharField(max_length=120)
     password = CharField(max_length=60)
 
     def __str__(self):
-        return "{}".format(self.nick_name)
+        return "{}".format(self.name)
 
 
 class Project(Model):
     """ Модель хранения информации о проекте"""
 
     name = CharField(max_length=100)
-    description = TextField(max_length=1000, null=True)
+    description = TextField(max_length=1000, default="")
     # active, dropped, finished, maybe
     status = CharField(max_length=8, null=True)
     staff_name = ManyToManyField(User)

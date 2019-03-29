@@ -12,7 +12,7 @@ class FileAdmin(admin.ModelAdmin):
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nick_name', 'email', 'password')
+    list_display = ('id', 'name', 'email', 'password')
 
 
 class ProjectAdmin(admin.ModelAdmin):

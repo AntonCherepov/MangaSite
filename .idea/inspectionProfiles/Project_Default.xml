@@ -6,6 +6,8 @@
         <list>
           <option value="mainpage.models.News.objcts" />
           <option value="mainpage.models.News.objects" />
+          <option value="mainpage.models.Project.objects" />
+          <option value="mainpage.models.User.objects" />
         </list>
       </option>
     </inspection_tool>
