@@ -1,4 +1,5 @@
 from os import path
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import View
 from mainpage.models import News, Project, User
@@ -6,9 +7,12 @@ from mainpage.models import News, Project, User
 
 class Mainpage(View):
     @staticmethod
-    def get(request):
-        news = News.objects.order_by("-id")[:5]
-        context = {"news": news}
+    def get(request, page=1):
+        news = News.objects.order_by("-id")
+        paginator = Paginator(news, 4)
+        # page = request.GET.get("page")
+        page_obj = paginator.get_page(page)
+        context = {"page_obj": page_obj, "paginator": paginator}
         return render(request, "mainpage/mainpage.html", context)
 
 
@@ -32,11 +36,7 @@ class Projects(View):
 
         for i in [*all_projects]:
             if not i:
-                try:
-                    all_projects.pop(all_projects.index(i))
-                    print("eeeeeeeeeeeeeeeee")
-                except ValueError:
-                    pass
+                all_projects.pop(all_projects.index(i))
         context = {"all_projects": all_projects}
         if not all_projects:
             context = {"all_projects": "no content"}
@@ -62,8 +62,9 @@ class Index(View):
         return render(request, "mainpage/index.html", context)
 
 
-def delete_projects(projects):
-    for i in projects:
-        if not i:
-            delete_projects(projects)
-    return projects
+'''
+    model = News
+    paginate_by = 2
+    template_name = "mainpage/mainpage.html"
+    queryset = News.objects.order_by("-id")
+'''

@@ -16,7 +16,8 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'status', 'description')
+    list_display = ('id', 'name', 'status', 'description',
+                    'author', 'image', 'genres')
     filter_horizontal = ['staff_name']
 
 

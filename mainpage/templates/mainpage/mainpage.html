@@ -2,13 +2,13 @@
 
 {% block content %}
     <div class="newsblock">
-        {% for post in news %}
+        {% for post in page_obj %}
             <div class="element">
                 <div class="headline"><h2>
                     {{ post.headline }}
                 </h2></div>
                 <div class="main_image">
-                    <img src="{{ post.image.url }}" alt="image" class="image">
+                    <img src="{{ post.image.url }}" alt="image" class="image" width="200" height="300">
                 </div>
                 <div class="element_right">
                     <div class="main_text">{{ post.text }}</div>
@@ -28,4 +28,7 @@
             </div>
         {% endfor %}
     </div>
+    {% for i in paginator.page_range %}
+        <a href="{{ i }}" style="font-size: 18pt; padding-left: 15px;">{{ i }}</a>
+    {% endfor %}
 {% endblock content %}

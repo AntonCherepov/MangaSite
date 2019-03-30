@@ -23,6 +23,8 @@ class Project(Model):
 
     name = CharField(max_length=100)
     description = TextField(max_length=1000, default="")
+    author = CharField(max_length=50, default="Не указан")
+    genres = CharField(max_length=100, default="Не указаны")
     # active, dropped, finished, maybe
     status = CharField(max_length=8, null=True)
     staff_name = ManyToManyField(User)

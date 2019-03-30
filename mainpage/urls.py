@@ -4,11 +4,13 @@ from MangaSite import settings
 from .views import Index, Mainpage, Projects, Team, ProjectInfo
 
 urlpatterns = [
-    path('', Mainpage.as_view(), name='mainpage'),
+    path('', Mainpage.as_view(), name="mainpage"),
+    path('<int:page>', Mainpage.as_view(), name='mainpage'),
     path('index', Index.as_view(), name='index'),
     path('projects', Projects.as_view(), name='projects'),
     path('team', Team.as_view(), name='team'),
-    path('projects/<str:project_name>/', ProjectInfo.as_view(),
+    path('projects/<str:project_name>/',
+         ProjectInfo.as_view(),
          name='project_info'),
 ]
 

@@ -5,6 +5,9 @@
         <p>Название проекта: {{ project.name }}</p>
         Описание:
         <div class="description">{{ project.description }}</div>
+        <p> Автор: {{ project.author }} </p>
+        <p> Жанры: {{ project.genres }} </p>
+        <p><img src="/media/{{ project.image }}" alt="image" class="image" width="250" height="250"></p>
         <p>
             Над проектом работали:
             {% for staff in project.staff_name.all %}
@@ -14,7 +17,7 @@
         <div class="chapters">
             <ul class="chapters_in_projects">
                 {% for zip_file in project.file_set.all %}
-                    <li><a href="media/{{ zip_file.path }}" class="download_button">{{ zip_file.name }}</a></li>
+                    <li><a href="/media/{{ zip_file.path }}" class="download_button">{{ zip_file.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
