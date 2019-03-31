@@ -2,6 +2,9 @@
 
 {% block content %}
     {% for user in users %}
-        {{ user.name }}
+    <p>
+        Ник: {{ user.name }}<br>
+        Должность: {{ user.staff_position }}
+    </p>
     {% endfor %}
 {% endblock content %}

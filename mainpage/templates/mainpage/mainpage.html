@@ -28,7 +28,9 @@
             </div>
         {% endfor %}
     </div>
-    {% for i in paginator.page_range %}
-        <a href="{{ i }}" style="font-size: 18pt; padding-left: 15px;">{{ i }}</a>
-    {% endfor %}
+    <div class="change_page">
+        {% for i in paginator.page_range %}
+            <a href="{{ i }}" class="btn-class">{{ i }}</a>
+        {% endfor %}
+    </div>
 {% endblock content %}
