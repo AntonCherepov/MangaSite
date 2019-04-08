@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mainpage.models import File, User, News, Project
+from mainpage.models import File, Profile, News, Project, Comment
 
 
 class NewsAdmin(admin.ModelAdmin):
@@ -11,8 +11,8 @@ class FileAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'path', 'project_name')
 
 
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'password')
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'name', 'staff_position', 'to_show')
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -21,7 +21,13 @@ class ProjectAdmin(admin.ModelAdmin):
     filter_horizontal = ['staff_name']
 
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'news', 'text', 'like')
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(File, FileAdmin)
-admin.site.register(User, UserAdmin)
+admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(Comment, CommentAdmin)
+

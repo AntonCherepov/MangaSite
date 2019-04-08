@@ -1,8 +1,11 @@
 from os import path
 from django.core.paginator import Paginator
+from django.db import IntegrityError
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import View
-from mainpage.models import News, Project, User
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.models import User as Auth_user
+from mainpage.models import News, Project, Profile
 
 
 class Mainpage(View):
@@ -19,7 +22,7 @@ class Mainpage(View):
 class Team(View):
     @staticmethod
     def get(request):
-        users = User.objects.all()
+        users = Profile.objects.filter(to_show=True)
         context = {"users": users}
         return render(request, "mainpage/team.html", context)
 
@@ -33,7 +36,6 @@ class Projects(View):
         finished_projects = Project.objects.filter(status="finished")
         all_projects = [active_projects, dropped_projects,
                         maybe_projects, finished_projects]
-
         for i in [*all_projects]:
             if not i:
                 all_projects.pop(all_projects.index(i))
@@ -49,6 +51,51 @@ class ProjectInfo(View):
         project = get_object_or_404(Project, name=project_name)
         context = {"project": project}
         return render(request, "mainpage/project_info.html", context)
+
+
+class Registration(View):
+    @staticmethod
+    def get(request):
+        return render(request, "mainpage/registration.html")
+
+    @staticmethod
+    def post(request):
+        username = request.POST.get("login")
+        password = request.POST.get("password")
+        email = request.POST.get("email")
+        try:
+            user = Auth_user.objects.create_user(username=username,
+                                                 email=email,
+                                                 password=password)
+            profile = Profile(user=user, name=username)
+            user.save()
+            profile.save()
+        except ValueError:
+            context = {"err": "Для регистрации необходимо ввести логин!"}
+            return render(request, "mainpage/registration.html", context)
+        except IntegrityError:
+            context = {"err": "Произошла ошибка! Возможно пользователь с "
+                              "таким именем уже зарегистрирован."}
+            return render(request, "mainpage/registration.html", context)
+        return render(request, "mainpage/registration_finished.html")
+
+
+class Login(View):
+    @staticmethod
+    def get(request):
+        return render(request, "mainpage/auth.html")
+
+    @staticmethod
+    def post(request):
+        print(request)
+        if str(request.POST.get("logout")) == "logout":
+            logout(request)
+        username = request.POST.get("login")
+        password = request.POST.get("password")
+        user = authenticate(username=username, password=password)
+        if user is not None and user.is_active:
+            login(request, user)
+        return render(request, "mainpage/auth.html")
 
 
 class Index(View):

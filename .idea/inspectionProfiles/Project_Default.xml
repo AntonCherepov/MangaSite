@@ -8,6 +8,7 @@
           <option value="mainpage.models.News.objects" />
           <option value="mainpage.models.Project.objects" />
           <option value="mainpage.models.User.objects" />
+          <option value="mainpage.models.Profile.objects" />
         </list>
       </option>
     </inspection_tool>

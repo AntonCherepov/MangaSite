@@ -1,27 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-    {% if all_projects != "no content" %}
-        {% for current_type_projects in all_projects %}
-            {% if current_type_projects.0.status == "active" %}
-                <h3>Активные проекты</h3>
-            {% elif current_type_projects.0.status == "dropped" %}
-                <h3>Замороженные и брошенные проекты</h3>
-            {% elif current_type_projects.0.status == "maybe" %}
-                <h3>Будущие проекты</h3>
-            {% elif current_type_projects.0.status == "finished" %}
-                <h3>Завершенные проекты</h3>
-            {% else %}
-                <h3>{{ all_projects }}</h3>
-            {% endif %}
-            <ul class="project_content">
-                {% for project in current_type_projects %}
-                <li><a href="projects/{{ project.name }}">
-                    <img src="media/{{ project.image }}" alt="image" class="image" width="250" height="250">
-                </a></li>
-                {% endfor %}
-        {% endfor %}
-    {% else %}
-        <h2 align="center">Нету каких-либо проектов =(</h2>
-    {% endif %}
-    </ul>
+    <div class="projects_content">
+        {% if all_projects != "no content" %}
+            {% for current_type_projects in all_projects %}
+                {% if current_type_projects.0.status == "active" %}
+                    <h3 align="center">Активные проекты</h3>
+                {% elif current_type_projects.0.status == "dropped" %}
+                    <h3 align="center">Замороженные и брошенные проекты</h3>
+                {% elif current_type_projects.0.status == "maybe" %}
+                    <h3 align="center">Будущие проекты</h3>
+                {% elif current_type_projects.0.status == "finished" %}
+                    <h3 align="center">Завершенные проекты</h3>
+                {% else %}
+                    <h3 align="center">{{ all_projects }}</h3>
+                {% endif %}
+                <ul class="project_list">
+                    {% for project in current_type_projects %}
+                    <li><a href="projects/{{ project.name }}">
+                        <img src="media/{{ project.image }}" alt="image" class="image" width="230" height="230">
+                    </a></li>
+                    {% endfor %}
+            {% endfor %}
+        {% else %}
+            <h2 align="center">Нету каких-либо проектов =(</h2>
+        {% endif %}
+        </ul>
+    </div>
 {% endblock content %}

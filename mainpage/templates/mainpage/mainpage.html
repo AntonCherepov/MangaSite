@@ -22,8 +22,8 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="timeAndAuthor">
-                    <p>Автор: {{ post.user }} | Опубликовано: {{ post.pub_date }}</p>
+                <div class="time_and_author">
+                    <p>Автор: {{ post.user.profile.name }} | Опубликовано: {{ post.pub_date }}</p>
                 </div>
             </div>
         {% endfor %}

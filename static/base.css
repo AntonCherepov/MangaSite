@@ -11,31 +11,31 @@
 }
 .contentblock{
     margin: auto;
+    width: 800px;
+    border: solid 1px gray;
+    background: #F5F5F5;
 }
 .nav{
-    text-align: center;
-    padding-right: 10px;
-    width: 350px;
+    padding-right: 0px;
+    width: 800px;
     height: 45px;
     line-height: 43px;
     margin: auto;
 }
 ul.pages{
     margin: 0;
-    padding: 4px;
+    padding: 0px;
 }
 ul.pages li{
     display: inline;
-    margin-right: 5px;
-    padding: 10px;
+    margin-right: 0px;
+    padding: 3px;
     color: #00BFFF;
     font: 14pt Arial;
 }
 /* mainpage.html */
 .newsblock{
-    width: 800px; 
     padding: 10px; 
-    margin: auto;
     border: solid 2px lightgray;
 }
 .element{
@@ -43,7 +43,7 @@ ul.pages li{
     border: solid 1px lightgray;
     color: gray;
 }
-.timeAndAuthor{
+.time_and_author{
     text-align: right;
     margin-right: 15px;
 }
@@ -126,19 +126,50 @@ a.btn-class:hover, .btn-class:active{
 }
 .change_page{
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     padding-top: 10px
+}
+a.nav_button {
+    background: #F8F8FF;
+    background-image: -webkit-linear-gradient(top, #F8F8FF, #F5F5F5);
+    background-image: -moz-linear-gradient(top, #F8F8FF, #F5F5F5);
+    background-image: -ms-linear-gradient(top, #F8F8FF, #F5F5F5);
+    background-image: -o-linear-gradient(top, #F8F8FF, #F5F5F5);
+    background-image: linear-gradient(to bottom, #F8F8FF, #F5F5F5);
+    -webkit-border-radius: 14;
+    -moz-border-radius: 14;
+    border-radius: 14px;
+    font-family: Arial;
+    color: #000000;
+    font-size: 17px;
+    padding: 6px 13px 8px 13px;
+    border: solid #A9A9A9 1px;
+    text-decoration: none;
+}
+
+a.nav_button:hover {
+    background: #F8F8FF;
+    background-image: -webkit-linear-gradient(top, #F8F8FF, #d3d3d3);
+    background-image: -moz-linear-gradient(top, #F8F8FF, #d3d3d3);
+    background-image: -ms-linear-gradient(top, #F8F8FF, #d3d3d3);
+    background-image: -o-linear-gradient(top, #F8F8FF, #d3d3d3);
+    background-image: linear-gradient(to bottom, #F8F8FF, #d3d3d3);
+    text-decoration: none;
 }
 
 /* projects.html */
-ul.project_content{
+.projects_content{
+    padding-left: 12px;
+    padding-right: 12px;
+}
+ul.project_list{
     width: auto;
     height: auto;
     padding-inline-start: 0px;
 }
-ul.project_content li{
-    display: inline;
-    padding: 7px;
+ul.project_list li{
+    display: inline-block;
+    padding: 11px;
 }
 /* project_info.html */
 .project_info{

@@ -8,15 +8,23 @@
         <link href="{% static 'base.css' %}" type="text/css" rel="stylesheet">
     </head>
     <body>
+        {% if user.is_authenticated %}
+            Logged in
+        {% else %}
+            Not logged in yet
+        {% endif %}
         <div class="doc">
             <div class="preview" align="center">
                 Поле для JS
+
             </div>
             <div class="nav">
                 <ul class="pages">
-                    <li><a href="/">Main</a></li>
-                    <li><a href="/projects">Projects</a></li>
-                    <li><a href="/team">Team</a></li>
+                    <li><a href="/" class="nav_button">Main</a></li>
+                    <li><a href="/projects" class="nav_button">Projects</a></li>
+                    <li><a href="/team" class="nav_button">Team</a></li>
+                    <li><a href="/registration" class="nav_button">Reg</a></li>
+                    <li><a href="/auth" class="nav_button">Auth</a></li>
                 </ul>
             </div>
             <div class="contentblock">

@@ -1,18 +1,20 @@
+from django.contrib.auth.models import User
 from django.db.models import (ImageField, DateTimeField,
                               TextField, FileField,
                               CharField, ForeignKey,
-                              Model, CASCADE,
-                              ManyToManyField)
+                              OneToOneField, BooleanField,
+                              ManyToManyField, Model,
+                              CASCADE, IntegerField)
 
 
-class User(Model):
+class Profile(Model):
     """ Модель для пользователя """
 
+    user = OneToOneField(User, on_delete=CASCADE, primary_key=True)
     name = CharField(max_length=50)
+    to_show = BooleanField(default=False)
     staff_position = CharField(max_length=100, default="")
     image = ImageField('Avatar', upload_to='user_images', null=True)
-    email = CharField(max_length=120)
-    password = CharField(max_length=60)
 
     def __str__(self):
         return "{}".format(self.name)
@@ -57,4 +59,16 @@ class News(Model):
     image = ImageField('Image name', upload_to='images')
 
     def __str__(self):
-        return "{}".format(self.user)
+        return "{} - {}".format(self.id, self.headline)
+
+
+class Comment(Model):
+    """ Модель хранения комментария """
+
+    news = ForeignKey(News, on_delete=CASCADE)
+    user = ForeignKey(User, on_delete=CASCADE)
+    text = TextField(max_length=300)
+    like = IntegerField(default=0)
+
+    def __str__(self):
+        return "{} - {}".format(self.user, self.news)
