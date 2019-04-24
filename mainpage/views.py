@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import View
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User as Auth_user
-from mainpage.models import News, Project, Profile
+from mainpage.models import News, Project, Profile, Comment
 
 
 class Mainpage(View):
@@ -51,6 +51,27 @@ class ProjectInfo(View):
         project = get_object_or_404(Project, name=project_name)
         context = {"project": project}
         return render(request, "mainpage/project_info.html", context)
+
+
+class NewsInfo(View):
+    @staticmethod
+    def get(request, news_id):
+        news = get_object_or_404(News, id=news_id)
+        comments = Comment.objects.filter(news_id=news_id)
+        context = {"news": news, "comments": comments}
+        return render(request, "mainpage/news_info.html", context)
+
+    @staticmethod
+    def post(request, news_id):
+        news = get_object_or_404(News, id=news_id)
+        user = request.user
+        text = request.POST.get('comment')
+        u = user.comment_set.create(text=text)
+        u.news_id = news_id
+        u.save()
+        comments = Comment.objects.filter(news_id=news_id)
+        context = {"news": news, "comments": comments}
+        return render(request, "mainpage/news_info.html", context)
 
 
 class Registration(View):

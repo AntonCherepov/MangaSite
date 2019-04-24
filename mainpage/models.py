@@ -1,10 +1,11 @@
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db.models import (ImageField, DateTimeField,
                               TextField, FileField,
                               CharField, ForeignKey,
                               OneToOneField, BooleanField,
                               ManyToManyField, Model,
-                              CASCADE, IntegerField)
+                              CASCADE, IntegerField, PositiveIntegerField)
 
 
 class Profile(Model):
@@ -65,10 +66,11 @@ class News(Model):
 class Comment(Model):
     """ Модель хранения комментария """
 
-    news = ForeignKey(News, on_delete=CASCADE)
+    news_id = PositiveIntegerField(null=True)
     user = ForeignKey(User, on_delete=CASCADE)
     text = TextField(max_length=300)
     like = IntegerField(default=0)
+    to_show = BooleanField(default=True)
 
     def __str__(self):
-        return "{} - {}".format(self.user, self.news)
+        return "{} - {}".format(self.user, self.news_id)
