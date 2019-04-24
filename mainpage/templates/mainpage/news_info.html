@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="news_info">
+        <div class="hl">
+            <a href="news/{{ news.id }}" class="headline">
+                {{ news.headline }}
+            </a>
+        </div>
+        <div class="main_image">
+            <img src="{{ news.image.url }}" alt="image" class="image" width="225" height="225">
+        </div>
+        <div class="element_right">
+            <div class="main_text">{{ news.text }}</div>
+
+            <div class="clear"></div>
+        </div>
+        <div class="news_chapters">
+            <div class="download_text">Скачать:</div>
+            <ul class="chapters_in_projects">
+                {% for zip_file in news.zip_file.all %}
+                    <li><a href="/media/{{ zip_file.path }}" class="description">{{ zip_file.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="time_and_author">
+            <p>Автор: {{ news.user.profile.name }} | Опубликовано: {{ news.pub_date }}</p>
+        </div>
+    </div>
+    Комментарии:
+    <div class="comments_to_show">
+        {% for comment in comments %}
+            {{ comment.text }} | user: {{ comment.user }}<br>
+        {% endfor %}
+    </div>
+    <br>
+    <form action="/news/{{ news.id }}/" method="post">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+            Отправить комментарий: <input type=text name="comment" size=50 maxlength=50>
+            <input type="submit" value="Далее">
+        {% endif %}
+    </form>
+
+{% endblock content %}
