@@ -23,4 +23,5 @@ urlpatterns = [
          RedirectView.as_view(url=settings.STATIC_URL + 'favicon.ico')),
     path('nikto_ne_uznaet321/', admin.site.urls),
     path('', include('mainpage.urls')),
+    path('', include('users.urls')),
 ]

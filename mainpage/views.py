@@ -1,11 +1,9 @@
 from os import path
 from django.core.paginator import Paginator
-from django.db import IntegrityError
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import View
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.models import User as Auth_user
-from mainpage.models import News, Project, Profile, Comment
+from mainpage.models import News, Project, Comment
+from users.models import Profile
 
 
 class Mainpage(View):
@@ -72,51 +70,6 @@ class NewsInfo(View):
         comments = Comment.objects.filter(news_id=news_id)
         context = {"news": news, "comments": comments}
         return render(request, "mainpage/news_info.html", context)
-
-
-class Registration(View):
-    @staticmethod
-    def get(request):
-        return render(request, "mainpage/registration.html")
-
-    @staticmethod
-    def post(request):
-        username = request.POST.get("login")
-        password = request.POST.get("password")
-        email = request.POST.get("email")
-        try:
-            user = Auth_user.objects.create_user(username=username,
-                                                 email=email,
-                                                 password=password)
-            profile = Profile(user=user, name=username)
-            user.save()
-            profile.save()
-        except ValueError:
-            context = {"err": "Для регистрации необходимо ввести логин!"}
-            return render(request, "mainpage/registration.html", context)
-        except IntegrityError:
-            context = {"err": "Произошла ошибка! Возможно пользователь с "
-                              "таким именем уже зарегистрирован."}
-            return render(request, "mainpage/registration.html", context)
-        return render(request, "mainpage/registration_finished.html")
-
-
-class Login(View):
-    @staticmethod
-    def get(request):
-        return render(request, "mainpage/auth.html")
-
-    @staticmethod
-    def post(request):
-        print(request)
-        if str(request.POST.get("logout")) == "logout":
-            logout(request)
-        username = request.POST.get("login")
-        password = request.POST.get("password")
-        user = authenticate(username=username, password=password)
-        if user is not None and user.is_active:
-            login(request, user)
-        return render(request, "mainpage/auth.html")
 
 
 class Index(View):

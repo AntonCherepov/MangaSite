@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mainpage.models import File, Profile, News, Project, Comment
+from mainpage.models import File, News, Project, Comment
 
 
 class NewsAdmin(admin.ModelAdmin):
@@ -9,10 +9,6 @@ class NewsAdmin(admin.ModelAdmin):
 
 class FileAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'path', 'project_name')
-
-
-class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name', 'staff_position', 'to_show')
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -27,7 +23,5 @@ class CommentAdmin(admin.ModelAdmin):
 
 admin.site.register(News, NewsAdmin)
 admin.site.register(File, FileAdmin)
-admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Comment, CommentAdmin)
-

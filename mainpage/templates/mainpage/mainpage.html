@@ -13,7 +13,11 @@
                     <img src="{{ post.image.url }}" alt="image" class="image" width="200" height="200">
                 </a></div>
                 <div class="element_right">
-                    <div class="main_text">{{ post.text }}</div>
+                    <div class="main_text">
+                        {% if post.text|length <= 150 %}
+                            {{ post.text }}
+                        {% endif %}
+                    </div>
                     <div class="to_info">
                         <a href="news/{{ post.id }}" class="description">Подробнее</a>
                     </div>
@@ -23,6 +27,7 @@
                     <p>Автор: {{ post.user.profile.name }} | Опубликовано: {{ post.pub_date }}</p>
                 </div>
             </div>
+            <hr>
         {% endfor %}
     </div>
     <div class="change_page">
