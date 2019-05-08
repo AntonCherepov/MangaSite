@@ -52,6 +52,7 @@ class Comment(Model):
 
     news_id = PositiveIntegerField(null=True)
     user = ForeignKey(User, on_delete=CASCADE)
+    pub_date = DateTimeField('Date published', auto_now_add=True)
     text = TextField(max_length=300)
     like = IntegerField(default=0)
     to_show = BooleanField(default=True)

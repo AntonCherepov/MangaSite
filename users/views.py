@@ -24,7 +24,7 @@ class Registration(View):
             user.save()
             profile.save()
         except ValueError:
-            context = {"err": "Для регистрации необходимо ввести логин!"}
+            context = {"err": "Для регистрации необходимо заполнить все поля!"}
             return render(request, "users/registration.html", context)
         except IntegrityError:
             context = {"err": "Произошла ошибка! Возможно пользователь с "

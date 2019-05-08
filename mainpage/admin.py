@@ -18,7 +18,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'news_id', 'text', 'like')
+    list_display = ('id', 'pub_date', 'user', 'news_id', 'text', 'like')
 
 
 admin.site.register(News, NewsAdmin)

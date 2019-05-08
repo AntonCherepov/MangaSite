@@ -2,7 +2,26 @@ body {
         background: url(/static/main.jpg) no-repeat center center fixed;
         background-size: cover;
 }
-.doc{
+input {
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 10px;
+    width: auto;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+}
+label {
+    color: #ffffff;
+    font-family: Trebuchet MS;
+    font-size: 18px;
+}
+hr {
+    border: none; /* Убираем границу */
+    background-color: #54a3a7; /* Цвет линии */
+    color: #54a3a7; /* Цвет линии для IE6-7 */
+    height: 1px; /* Толщина линии */
+}
+.doc {
     /* background: #e0e0e0; */
 }
 .preview { 
@@ -13,25 +32,25 @@ body {
     color: 008080;
     line-height: 270px;
 }
-.contentblock{
+.contentblock {
     margin: auto;
     width: 800px;
     background: #18474d;
     opacity: 0.8;
 }
-.nav{
+.nav {
     margin-right: 0px;
     width: 800px;
     height: 45px;
     line-height: 43px;
     margin: auto;
 }
-ul.pages{
+ul.pages {
     margin: 0;
     padding: 0px;
     text-align: center;
 }
-ul.pages li{
+ul.pages li {
     display: inline;
     margin-right: 0px;
     text-align: center;
@@ -42,9 +61,7 @@ ul.pages li{
 }
 a.nav_button {
     opacity: 0.8;
-    background: #F8F8FF;
-    -webkit-border-radius: 14;
-    -moz-border-radius: 14;
+    background: #F0F8FF;
     border-radius: 14px;
     font-family: Trebuchet MS;
     color: #007070;
@@ -56,55 +73,36 @@ a.nav_button {
 }
 
 a.nav_button:hover {
-    background: #E0FFFF;
-    background-image: -webkit-linear-gradient(top, #18474d, #18474d);
-    background-image: -moz-linear-gradient(top, #18474d, #00FFFF);
-    background-image: -ms-linear-gradient(top, #18474d, #00FFFF);
-    background-image: -o-linear-gradient(top, #18474d, #00FFFF);
-    background-image: linear-gradient(to bottom, #9effff, #9effff);
+    background: #9effff;
     text-decoration: none;
 }
 
 /* mainpage.html */
-.newsblock{
+.newsblock {
 }
-.element{
+.element {
     background: #18474d;
-    border: solid 0px #54a3a7;
     color: #F8F8FF;
     padding-top: 20px;
     min-height: 225px;
     position: relative;
 }
-hr {
-    border: none; /* Убираем границу */
-    background-color: #54a3a7; /* Цвет линии */
-    color: #54a3a7; /* Цвет линии для IE6-7 */
-    height: 1px; /* Толщина линии */
-}
-.time_and_author{
+.time_and_author {
     text-align: right;
     margin-right: 15px;
     position: absolute;
-    bottom: 0;
+    bottom: 2;
     right: 0;
 }
-.to_info{
+.to_info {
     text-align: right;
     position: absolute;
     font-family: Trebuchet MS;
-    bottom: 70px;
+    bottom: 60px;
     right: 15px;
 }
-div.hl{
-    text-align: left;
-    float: right;
-    width: 500px;
-    margin-right: 20px;
-}
-.headline{
+.headline {
     margin-top: 7px;
-    font-family: Trebuchet MS;
     font-size: 33px;
     text-decoration: none;
     color: #63c7cf;
@@ -114,23 +112,23 @@ div.hl{
     top: 10px;
     left: 248px;
 }
-.main_image{
+.main_image {
     height: 210px;
     width: 230px;
     margin-left: 20px;
     float: left;
 }
-.image{
+.image {
     border: solid 2px #54a3a7;
 }
-.element_right{
+.element_right {
     float: left;
 }
-.zip{
+.zip {
     margin-left: 50px;
     margin-bottom: 10px;
 }
-.main_text{
+.main_text {
     margin-right: 20px;
     margin-top: 50px;
     width: 500px;
@@ -138,16 +136,14 @@ div.hl{
     font-family: Trebuchet MS;
     /* text-indent: 2.5em; */
 }
-.clear{
+.clear {
     clear: left;
 }
-a.download_button{
+a.download_button {
     display: inline-block;
     border:1px solid #778899;
     color: gray;
     border-radius: 13px 13px 13px 13px;
-    -webkit-border-radius: 13px 13px 13px 13px;
-    -moz-border-radius: 13px 13px 13px 13px;
     font-family: Trebuchet MS;
     width: auto;
     height: auto;
@@ -157,38 +153,35 @@ a.download_button{
     background-color: #F8F8FF;
     text-decoration: none;
 }
-a.download_button:hover, a.download_button:active{
+a.download_button:hover, a.download_button:active {
     border:1px solid #FFFFFF;
     color: gray;
     background-color: #FFFFFF;
 }
-a.btn-class{
+a.btn-class {
     display: inline-block;
     border:1px solid #75f4fe;
     color: #008080;
     background-color: #80c8cb;
     border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-    -moz-border-radius: 10px 10px 10px 10px;
     font-family: Trebuchet MS;
     width: auto;
     height: auto;
-    font-size: 15px;
+    font-size: 17px;
     padding: 7px 11px;
+    text-decoration: none;
 }
-a.btn-class:hover, .btn-class:active{
+a.btn-class:hover, .btn-class:active {
     color: #008080;
     background-color: #75f4fe;
 }
-.change_page{
+.change_page {
     text-align: center;
     padding-bottom: 20px;
     margin-top: 15px
 }
 a.description {
     background: #18474d;
-    -webkit-border-radius: 14;
-    -moz-border-radius: 14;
     border-radius: 13px;
     font-family: Trebuchet MS;
     color: #75f4fe;
@@ -202,35 +195,40 @@ a.description:hover {
     text-decoration: none;
 }
 /* projects.html */
-.projects_content{
+.projects_content {
     margin-left: 12px;
     margin-right: 12px;
 }
-ul.project_list{
+ul.project_list {
     width: auto;
     height: auto;
     padding-inline-start: 0px;
 }
-ul.project_list li{
+ul.project_list li {
     display: inline-block;
     margin: 11px;
 }
 /* project_info.html */
-.project_info{
+.project_info {
     width: 700px;
     height: auto;
     margin-left: 20px;
 }
-ul.chapters_in_projects{
+ul.chapters_in_projects {
     width: auto;
     height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+ul{
+    padding-inline-start: 0px;
+}
+ul.chapters_in_projects li {
+    list-style-type: none;
     margin-bottom: 20px;
 }
-ul.chapters_in_projects li{
-    margin: 4px;
-    list-style-type: none;
-}
-div.description{
+div.description {
     width: auto;
     height: auto;
     margin-left: 10px;
@@ -238,31 +236,83 @@ div.description{
 
 }
 /* news_info */
-.news_info{
-    background: #f5f5f5;
-    border: solid 1px lightgray;
-    color: gray;
+.news_info {
+    color: #F8F8FF;
     padding-top: 20px;
-    min-height: 300px;
     position: relative;
 }
-.news_chapters{
-    text-align: right;
-    margin-right: 25px;
-    position: absolute;
-    bottom: 70px;
-    left: 300px;
+.news_chapters {
+    margin-left: 275px;
+    margin-top: 85px;
+    padding-bottom: 10px;
 }
-.download_text{
-    text-align: left;
-    margin-right: 25px;
-    position: absolute;
-    bottom: 60px;
-    left: 30px;
+.user_name{
+    font-style: italic;
+    font-family: Trebuchet MS;
+    color: #ffffff;
+    display: inline;
+    margin-bottom: 5px;
+}
+.text_name_download {
+    margin-right: 125px;
+    margin-left: -7px;
+    margin-top: 10px;
     font-size: 15pt;
+    color: #F8F8FF;
+    font-family: Trebuchet MS;
+    font-style: italic;
 }
-.comments_to_show{
+.comments_to_show {
+    font-family: Trebuchet MS;
     margin-top: 20px;
     margin-left: 15px;
-
+    background: #18474d;
+    color: #F8F8FF;
+}
+.time_and_author_info {
+    text-align: right;
+    margin-top: 50px;
+    margin-right: 15px;
+}
+.headline_info {
+    font-family: Trebuchet MS;
+    font-size: 33px;
+    text-decoration: none;
+    color: #63c7cf;
+    font-weight: bold;
+    position: absolute;
+    top: 17px;
+    left: 263px;
+}
+.main_text_info {
+    margin-right: 20px;
+    margin-left: 15px;
+    margin-top: 50px;
+    width: 500px;
+    height: auto;
+    font-family: Trebuchet MS;
+    /* text-indent: 2.5em; */
+}
+.text {
+    margin-right: 125px;
+    margin-left: 7px;
+    margin-top: 10px;
+    font-size: 15pt;
+    color: #F8F8FF;
+    font-family: Trebuchet MS;
+}
+/* registration and auth*/
+.registration_main {
+    padding-bottom: 1px;
+    padding-top: 30px;
+}
+.input_field {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.exit {
+    padding-top: 5px;
+    padding-bottom: 15px;
+    text-align: center;
 }

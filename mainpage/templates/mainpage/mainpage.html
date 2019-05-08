@@ -4,11 +4,9 @@
     <div class="newsblock">
         {% for post in page_obj %}
             <div class="element">
-                <div class="hl">
-                    <a href="news/{{ post.id }}" class="headline">
-                        {{ post.headline }}
-                    </a>
-                </div>
+                <a href="news/{{ post.id }}" class="headline">
+                    {{ post.headline }}
+                </a>
                 <div class="main_image"><a href="news/{{ post.id }}">
                     <img src="{{ post.image.url }}" alt="image" class="image" width="200" height="200">
                 </a></div>
